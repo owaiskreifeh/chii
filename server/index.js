@@ -25,7 +25,7 @@ function start({ port = 8080, host, domain, server, ssl } = {}) {
       console.log("Using HTTPS server")
       const options = {
         key: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/privkey.pem"),
-        cert: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/chain.pem")
+        cert: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/fullchain.pem")
       };
 
       server = https.createServer(options,app.callback()).listen(port, host);
