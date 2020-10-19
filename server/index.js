@@ -21,7 +21,13 @@ function start({ port = 8080, host, domain, server, ssl } = {}) {
     util.log(`starting server at ${domain}`);
     let server = null;
     if(ssl){
-      server = https.createServer(app.callback()).listen(port, host);
+      
+      const options = {
+        key: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/privkey.pem"),
+        cert: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/chain.pem")
+      };
+
+      server = https.createServer(options,app.callback()).listen(port, host);
     }else{
       server = app.listen(port, host);
     }
