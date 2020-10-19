@@ -5,6 +5,7 @@ const compress = require('./middle/compress');
 const util = require('./lib/util');
 const WebSocketServer = require('./lib/WebSocketServer');
 const https = require("https");
+const fs = require("fs");
 
 function start({ port = 8080, host, domain, server, ssl } = {}) {
   domain = domain || 'localhost:' + port;
