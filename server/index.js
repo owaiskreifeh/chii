@@ -21,7 +21,7 @@ function start({ port = 8080, host, domain, server, ssl } = {}) {
     util.log(`starting server at ${domain}`);
     let server = null;
     if(ssl){
-      
+      console.log("Using HTTPS server")
       const options = {
         key: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/privkey.pem"),
         cert: fs.readFileSync("/etc/letsencrypt/live/tvtools.shahid.net/chain.pem")
