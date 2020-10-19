@@ -16,6 +16,11 @@ Remote debugging tool like [weinre](https://people.apache.org/~pmuellr/weinre/do
 
 ![Chii](./docs/screenshot.jpg)
 
+## Build Locally
+1. get submoduls `git submodule update --init --recursive`
+2. install node modules `npm i`
+2. run ci command `npm run ci`
+ 
 ## Demo
 
 ![Demo](./docs/qrcode.png)
@@ -45,6 +50,10 @@ Start the server with the following command.
 ```bash
 chii start -p 8080
 ```
+
+To run over https
+```bash
+chii start -p 8080 --ssl=true
 
 Use this script to inject the target code into your webpage.
 

@@ -4,8 +4,9 @@ const router = require('./middle/router');
 const compress = require('./middle/compress');
 const util = require('./lib/util');
 const WebSocketServer = require('./lib/WebSocketServer');
+const https = require("https");
 
-function start({ port = 8080, host, domain, server } = {}) {
+function start({ port = 8080, host, domain, server, ssl, cert, key } = {}) {
   domain = domain || 'localhost:' + port;
 
   const app = new Koa();
@@ -18,7 +19,12 @@ function start({ port = 8080, host, domain, server } = {}) {
     wss.start(server);
   } else {
     util.log(`starting server at ${domain}`);
-    const server = app.listen(port, host);
+    let server = null;
+    if(ssl){
+      server = https.createServer(app.callback()).listen(port, host);
+    }else{
+      server = app.listen(port, host);
+    }
 
     wss.start(server);
   }

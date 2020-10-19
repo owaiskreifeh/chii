@@ -12,11 +12,17 @@ program
   .option('-p, --port <port>', 'set the port to start on. defaults to 3000', parseInt)
   .option('-h, --host <host>', 'set the host. defaults to 0.0.0.0')
   .option('-d, --domain <domain>', 'set the domain. defaults to localhost:port')
-  .action(({ port, host, domain }) => {
+  .option('-s, --ssl', 'use HTTPS server')
+  .option('-c, --cert <cert-path>', 'set cert path')
+  .option('-k, --key <key-path>', 'set key path')
+  .action(({ port, host, domain, ssl, cert, key }) => {
     server.start({
       port,
       host,
       domain,
+      ssl,
+      cert,
+      key
     });
   });
 
