@@ -68,6 +68,8 @@
 </head>
 <body>
   <div class="content-header">Pages</div>
+  <button onclick="log('{{targets}}')">Log</button>
+
   {{#each targets}}
     <div class="row">
       <div class="properties-box">
@@ -107,6 +109,10 @@
         if (timestamp > start) location.reload();
       }, () => {});
     }, 2000);
+
+    function log(...args){
+      console.log(...args)
+    }
   </script>
 </body>
 </html>
