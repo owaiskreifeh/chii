@@ -68,8 +68,7 @@
 </head>
 <body>
   <div class="content-header">Tv tools v0.4</div>
-  <button onclick="log()">Log</button>
-  {{log targets}}
+  {{ JSON.stringify(targets) }}
 
   {{#each targets}}
     <div class="row">
