@@ -67,8 +67,8 @@
   </style>
 </head>
 <body>
-  <div class="content-header">Pages</div>
-  <button onclick="log({{targets}})">Log</button>
+  <div class="content-header">Tv tools v0.4</div>
+  <button onclick="log()">Log</button>
 
   {{#each targets}}
     <div class="row">
@@ -110,8 +110,8 @@
       }, () => {});
     }, 2000);
 
-    function log(...args){
-      console.log(...args)
+    function log(){
+      console.log(targets)
     }
   </script>
 </body>
