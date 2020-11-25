@@ -6,7 +6,6 @@ const TPL_PATH = path.resolve(__dirname, '../tpl');
 
 const cache = {};
 
-handlebars.logger.level = handlebars.logger.DEBUG;
 handlebars.registerHelper('raw', function (options) {
   return options.fn();
 });

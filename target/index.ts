@@ -49,6 +49,40 @@ function getFavicon() {
   return favicon;
 }
 
+function getInfo(){
+  try{
+    let info = 'device info not supported';
+    // Tizen 
+    if(window && window.webapis && window.webapis.productinfo){
+      const platform = window && window.navigator && window.navigator.userAgent && 'Samsung Smart TV - ' + window.navigator.userAgent.match(/\w*Tizen\w*([^\)|;]+)/g).join('');
+      const deviceModel = webapis.productinfo.getRealModel();
+      const modelCode = webapis.productinfo.getModelCode();
+      info = `Platfrom: ${platform} | Model: ${deviceModel} | Model Code: ${modelCode}`;
+    }
+  
+    // Vidaa 
+    if (window && window.Hisense_GetModelName){
+      const platfrom = "Hisense Vida TV";
+      const deviceModel = window.Hisense_GetModelName();
+      info = `Platfrom: ${platform} | Model: ${deviceModel}`;
+    }
+  
+    // WebOs
+    if(window && window.webOS && window.webOS.deviceInfo){
+      webOS.deviceInfo(info => {
+        const platform = 'LG Smart TV - ' + info.sdkVersion;
+        const deviceModel = info.modelName;
+        const modelCode = info.version;
+        info = `Platfrom: ${platform} | Model: ${deviceModel} | Model Code: ${modelCode}`;
+    });
+    }
+    return info;
+  }catch(err){
+    console.error("Error while sending device info", err)
+  }
+  return 'error - can\'t fetch device info'
+}
+
 const link = document.createElement('a');
 
 function fullUrl(href: string) {
@@ -72,6 +106,8 @@ const ws = new Socket(
     url: location.href,
     title: (window as any).ChiiTitle || document.title,
     favicon: getFavicon(),
+    id: id,
+    info: getInfo(),
   })}`
 );
 

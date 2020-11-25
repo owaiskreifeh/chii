@@ -12,8 +12,8 @@ module.exports = class WebSocketServer {
     wss.on('connection', ws => {
       const type = ws.type;
       if (type === 'target') {
-        const { id, _url, title, favicon } = ws;
-        this.channelManager.createTarget(id, ws, _url, title, favicon);
+        const { id, _url, title, favicon, info } = ws;
+        this.channelManager.createTarget(id, ws, _url, title, favicon, info);
       } else {
         const { id, target } = ws;
         this.channelManager.createClient(id, ws, target);
@@ -39,6 +39,7 @@ module.exports = class WebSocketServer {
             ws._url = q.url;
             ws.title = q.title;
             ws.favicon = q.favicon;
+            ws.info = q.info
           } else {
             ws.target = q.target;
           }
