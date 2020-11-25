@@ -53,6 +53,10 @@
     .url {
       color: #999;
     }
+    .info {
+      color: #444;
+      display: block;
+    }
     .action {
       color: rgb(17, 85, 204);
       cursor: pointer;
@@ -76,8 +80,8 @@
           <div class="subrow">
             <div class="name">{{title}}</div>
             <div class="url">{{url}}</div>
-            <div class="url">{{info}}</div>
           </div>
+          <div class="info">{{info}}</div>
           <div class="actions">
             <a class="action" onclick="inspect('{{id}}')">inspect</a>
           </div>
