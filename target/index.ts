@@ -51,25 +51,28 @@ function getFavicon() {
 
 function getInfo(){
   try{
-    let info = 'device info not supported';
+    let info: string = 'device info not supported';
     // Tizen 
-    if(window && window.webapis && window.webapis.productinfo){
-      const platform = window && window.navigator && window.navigator.userAgent && 'Samsung Smart TV - ' + window.navigator.userAgent.match(/\w*Tizen\w*([^\)|;]+)/g).join('');
-      const deviceModel = webapis.productinfo.getRealModel();
-      const modelCode = webapis.productinfo.getModelCode();
+    if(window && (window as any).webapis && (window as any).webapis.productinfo){
+      let platform = 'Samsung Smart TV - ';
+      if(window && window.navigator && window.navigator.userAgent != null) {
+        platform += window.navigator.userAgent?.match(/\w*Tizen\w*([^\)|;]+)/g)!.join('');
+      }
+      const deviceModel = (window as any).webapis.productinfo.getRealModel();
+      const modelCode = (window as any).webapis.productinfo.getModelCode();
       info = `Platfrom: ${platform} | Model: ${deviceModel} | Model Code: ${modelCode}`;
     }
   
     // Vidaa 
-    if (window && window.Hisense_GetModelName){
-      const platfrom = "Hisense Vida TV";
-      const deviceModel = window.Hisense_GetModelName();
+    if (window && (window as any).Hisense_GetModelName){
+      const platform = "Hisense Vida TV";
+      const deviceModel = (window as any).Hisense_GetModelName();
       info = `Platfrom: ${platform} | Model: ${deviceModel}`;
     }
   
     // WebOs
-    if(window && window.webOS && window.webOS.deviceInfo){
-      webOS.deviceInfo(info => {
+    if(window && (window as any).webOS && (window as any).webOS.deviceInfo){
+      (window as any).webOS.deviceInfo((info: any) => {
         const platform = 'LG Smart TV - ' + info.sdkVersion;
         const deviceModel = info.modelName;
         const modelCode = info.version;
