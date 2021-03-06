@@ -7,7 +7,7 @@ const WebSocketServer = require('./lib/WebSocketServer');
 
 function start() {
   const port = process.env.PORT;
-  const domain = domain || 'localhost:' + port;
+  const domain = 'https://aqueous-bastion-16978.herokuapp.com';
 
   const app = new Koa();
   const wss = new WebSocketServer();
