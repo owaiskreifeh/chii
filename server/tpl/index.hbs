@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,18 @@
     * {
       box-sizing: border-box;
     }
+
     body {
-      font-family: 'Segoe UI',Arial,'Microsoft Yahei',sans-serif;
+      font-family: 'Segoe UI', Arial, 'Microsoft Yahei', sans-serif;
       padding: 0 20px;
       font-size: 13px;
       font-family: Roboto;
     }
+
     a {
       color: #1966d2;
     }
+
     img {
       flex-shrink: 0;
       height: 16px;
@@ -25,6 +29,7 @@
       vertical-align: top;
       width: 23px;
     }
+
     .content-header {
       background: linear-gradient(white, white 40%, rgba(255, 255, 255, 0.92));
       border-bottom: 1px solid #eee;
@@ -32,30 +37,41 @@
       padding: 20px 0 10px 0;
       z-index: 1;
     }
+
     .row {
       padding: 6px 0;
       position: relative;
     }
+
     .properties-box {
       display: flex;
     }
+
     .subrow-box {
       display: inline-block;
       vertical-align: top;
     }
+
     .subrow {
       display: flex;
       flex-flow: row wrap;
     }
-    .subrow > div {
+
+    .subrow>div {
       margin-right: 0.5em;
     }
+
     .url {
       color: #999;
     }
+
     .action {
       color: rgb(17, 85, 204);
       cursor: pointer;
+      margin-right: 15px;
+    }
+    .info-row {
+      color: #444;
       margin-right: 15px;
     }
 
@@ -66,30 +82,42 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="content-header">Pages</div>
+  <div class="alert">
+    <h2>!PLEASE!</h2>
+    <p>
+      If you're looking for logs only, stop using this and use
+      <a href="https://remotejs.com/">https://remotejs.com/</a>
+      <br />
+      This tool have 200hrs/month in total :), "Shared between everybody"
+    </p>
+  </div>
+  <div class="content-header">Devices ... </div>
   {{#each targets}}
-    <div class="row">
-      <div class="properties-box">
-        <img src="{{favicon}}"/>
-        <div class="subrow-box">
-          <div class="subrow">
-            <div class="name">{{title}}</div>
-            <div class="url">{{url}}</div>
-            <div class="url">{{info}}</div>
-            <div class="url">{{meta}}</div>
-          </div>
-          <div class="actions">
-            <a class="action" onclick="inspect('{{id}}')">inspect</a>
-          </div>
+  <div class="row">
+    <div class="properties-box">
+      <img src="{{favicon}}" />
+      <div class="subrow-box">
+        <div class="subrow">
+          <div class="name">{{title}}</div>
+          <div class="url">{{url}}</div>
+        </div>
+        <div class="info-row">{{info}}</div>
+        <div class="info-row">{{meta}}</div>
+        <div class="actions">
+          <a class="action" onclick="inspect('{{id}}')">inspect</a>
         </div>
       </div>
     </div>
-  {{else}}
-    <div class="description">
-      You can use this script to inject the chii target code into your web page.<br/>
-      You can add any meta-data by passing data-[whatever] arrtibutes 
-      <pre>
+  </div>
+  {{/each}}
+  <div class="description">
+    You can use this script to inject the chii target code into your web page.<br />
+    You can add any meta-data by passing data-[whatever] arrtibutes. <br />
+    We will gather some information about the device and show it here,
+    if you aren't okay with this, please don't use this tool.
+    <pre>
         <code>
             &lt;script 
             src=&quot;https://aqueous-bastion-16978.herokuapp.com/target.js&quot;
@@ -98,10 +126,9 @@
             &gt;&lt;/script&gt;
         </code>
       </pre>
-    </div>  
-  {{/each}}
+  </div>
   <script>
-    !function(o,e){"function"==typeof define&&define.amd?define([],e):"object"==typeof module&&module.exports?module.exports=e():o._=e()}(this,function(){var _={};"object"==typeof window&&window._&&(_=window._);var isBrowser=_.isBrowser="object"==typeof window&&"object"==typeof document&&9===document.nodeType,objToStr=_.objToStr=(e=Object.prototype.toString,function(o){return e.call(o)}),e,isNode=_.isNode="undefined"!=typeof process&&"[object process]"===objToStr(process),random=_.random=function(o,e,r){null==e&&(e=o,o=0);var t=Math.random();return r||o%1||e%1?Math.min(o+t*(e-o+parseFloat("1e-"+((t+"").length-1))),e):o+Math.floor(t*(e-o+1))},randomBytes=_.randomBytes=function(exports){var crypto;return exports=function(o){for(var e=new Uint8Array(o),r=0;r<o;r++)e[r]=random(0,255);return e},isBrowser?(crypto=window.crypto||window.msCrypto,crypto&&(exports=function(o){var e=new Uint8Array(o);return crypto.getRandomValues(e),e})):isNode&&(crypto=eval("require")("crypto"),exports=function(o){return crypto.randomBytes(o)}),exports}({});return _.randomId=function(){for(var o=0<arguments.length&&void 0!==arguments[0]?arguments[0]:21,e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:"ModuleSymbhasOwnPr-0123456789ABCDEFGHIJKLNQRTUVWXYZ_cfgijkpqtvxz",r="",t=e.length,n=randomBytes(21);0<o--;)r+=e[n[o]%t];return r},_});
+    !function (o, e) { "function" == typeof define && define.amd ? define([], e) : "object" == typeof module && module.exports ? module.exports = e() : o._ = e() }(this, function () { var _ = {}; "object" == typeof window && window._ && (_ = window._); var isBrowser = _.isBrowser = "object" == typeof window && "object" == typeof document && 9 === document.nodeType, objToStr = _.objToStr = (e = Object.prototype.toString, function (o) { return e.call(o) }), e, isNode = _.isNode = "undefined" != typeof process && "[object process]" === objToStr(process), random = _.random = function (o, e, r) { null == e && (e = o, o = 0); var t = Math.random(); return r || o % 1 || e % 1 ? Math.min(o + t * (e - o + parseFloat("1e-" + ((t + "").length - 1))), e) : o + Math.floor(t * (e - o + 1)) }, randomBytes = _.randomBytes = function (exports) { var crypto; return exports = function (o) { for (var e = new Uint8Array(o), r = 0; r < o; r++)e[r] = random(0, 255); return e }, isBrowser ? (crypto = window.crypto || window.msCrypto, crypto && (exports = function (o) { var e = new Uint8Array(o); return crypto.getRandomValues(e), e })) : isNode && (crypto = eval("require")("crypto"), exports = function (o) { return crypto.randomBytes(o) }), exports }({}); return _.randomId = function () { for (var o = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 21, e = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : "ModuleSymbhasOwnPr-0123456789ABCDEFGHIJKLNQRTUVWXYZ_cfgijkpqtvxz", r = "", t = e.length, n = randomBytes(21); 0 < o--;)r += e[n[o] % t]; return r }, _ });
   </script>
   <script>
     function inspect(id) {
@@ -114,8 +141,9 @@
     setInterval(() => {
       fetch('/timestamp').then(res => res.text()).then(timestamp => {
         if (timestamp > start) location.reload();
-      }, () => {});
+      }, () => { });
     }, 2000);
   </script>
 </body>
+
 </html>
