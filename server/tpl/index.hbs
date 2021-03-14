@@ -118,13 +118,21 @@
     We will gather some information about the device and show it here,
     if you aren't okay with this, please don't use this tool.
     <pre>
-        <code>
-            &lt;script 
-            src=&quot;https://aqueous-bastion-16978.herokuapp.com/target.js&quot;
-            data-name=&quot;owais&quot; 
-            data-attempt=&quot;20&quot;
-            &gt;&lt;/script&gt;
-        </code>
+<code>
+    &lt;script 
+    src=&quot;https://aqueous-bastion-16978.herokuapp.com/target.js&quot;
+    data-name=&quot;name&quot; 
+    &gt;&lt;/script&gt;
+</code>
+      </pre>
+  <pre>
+<code>
+    (function(){
+    var s=document.createElement("script");
+    s.src="https://aqueous-bastion-16978.herokuapp.com/target.js";
+    s.setAttribute("name","tcl-owais");
+    document.head.appendChild(s);})()
+</code>
       </pre>
   </div>
   <script>
