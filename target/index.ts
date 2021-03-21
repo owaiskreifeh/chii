@@ -67,7 +67,7 @@ if (!id) {
   sessionStore.setItem('chii-id', id);
 }
 
-const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+const protocol = location.protocol === 'https:' ? 'wss:' : 'wss:';
 
 const ws = new Socket(
   `${protocol}//${ChiiServerUrl}/target/${id}?${query.stringify({
